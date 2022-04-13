@@ -375,13 +375,13 @@ function listToArr2(list) {
     return arr
 }
 
-console.log(listToArr2(myList));
+//console.log(listToArr2(myList));
 
 function prepend(value, list) {
     return {value, rest: list}
 }
 
-console.log(prepend(20, 5));
+//console.log(prepend(20, 5));
 
 function nth(list, n) {
     if(!list) return undefined;
@@ -389,8 +389,49 @@ function nth(list, n) {
     else return nth(list.rest, n - 1);
 }
 
-console.log(nth(arrayToList([10, 20, 30]), 2));
+//console.log(nth(arrayToList([10, 20, 30]), 2));
  
-//commit
+function deepEqual(a, b) {
+    if (a === b) return true;
 
-let continue = "dalishe"
+    if ( a == null || typeof a != "object" || b == null || typeof b != "object") return false;
+
+    let keysA = Object.keys(a);
+    let keysB = Object.keys(b);
+
+    if (keysA.length != keysB.length) false;
+
+    for (let key of keysA) {
+        if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+    }
+
+    return true;
+}   
+
+
+let obj = {here: {is: "an"}, object: 2};
+
+// console.log(deepEqual(obj, obj));
+
+// console.log(deepEqual(obj, {here: 1, object: 2}));
+
+// console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+
+
+let user = {
+    name: "John",
+    age: 30,
+};
+
+user.isAdmin = true;
+
+// let key = prompt("Что вы хотите узнать о пользователе?");
+
+let fruit = prompt("Какой фрукт купить?");
+
+let bag = {
+    [fruit]: 5,
+};
+
+alert(bag.apple);
+
